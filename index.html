@@ -1,109 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy 2nd Anniversary 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 2-Year Anniversary 💖</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffe6f0, #ffe0ec);
-      color: #4a002e;
-      text-align: center;
-      overflow: hidden;
+    :root {
+      --primary-color: #e91e63;
+      --secondary-color: #ff80ab;
+      --bg-color: #fff0f5;
+      --text-color: #333;
+      --shadow: 0 4px 8px rgba(233, 30, 99, 0.2);
     }
 
-    h1 {
-      margin-top: 60px;
-      font-size: 3em;
+    body {
+      background: url('https://i.pinimg.com/originals/fb/30/84/fb30847b9ef831d06547c7e8360211cf.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      max-width: 800px;
+      width: 90%;
+      margin: 0 auto;
       animation: fadeIn 2s ease-in-out;
     }
 
-    p {
-      font-size: 1.2em;
-      animation: fadeIn 3s ease-in-out;
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
-    .gallery {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .gallery img {
+    #present-box {
       width: 200px;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      height: 200px;
+      background: red;
+      border-radius: 20px;
+      position: relative;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+      transition: transform 0.3s ease;
     }
 
-    .gallery img:hover {
+    #present-box:hover {
       transform: scale(1.05);
     }
 
-    audio {
+    #present-box::before,
+    #present-box::after {
+      content: '';
+      position: absolute;
+      background: white;
+    }
+
+    #present-box::before {
+      width: 20px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #present-box::after {
+      height: 20px;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hidden {
       display: none;
     }
 
-    .flower {
+    h1 {
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .message {
+      font-size: 1.5em;
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .photo-frame {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .photo-caption {
       position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(233, 30, 99, 0.7);
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    .memories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .memory-card {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .memory-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    .roses {
+      display: none;
+      margin-top: 30px;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .roses img {
+      width: 80px;
+      animation: spin 6s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .rose {
+      position: absolute;
+      top: -50px;
       width: 40px;
-      height: 40px;
-      background: url('https://i.imgur.com/ovr0NAF.png') no-repeat center/contain;
       animation: fall 10s linear infinite;
-      pointer-events: none;
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
   </style>
 </head>
 <body>
+  <h1 id="intro-title">💖 Happy 2-Year Anniversary 💖</h1>
+  <div id="present-box"></div>
 
-  <h1>Happy 2 Year Anniversary! ❤️</h1>
-  <p>To the love of my life — thank you for two years of laughter, love, and memories. I love you more every single day.</p>
+  <div id="gift-content" class="hidden">
+    <div class="container">
+      <div class="message">
+        <p>Khuluka my heart, my love,</p>
+        <p>These past two years with you have been the best journey of my life. Every moment, every laugh, and even every challenge we had has only brought us closer together.</p>
+        <p>Khuluka ene u tovha Ṋaledzi yanga ye nda to tupula ene a eṰhe kha dzanda la minwe.</p>
+        <p>You are my sunshine, my rock, and my greatest adventure. Here's to many more years of love and happiness together!</p>
+      </div>
 
-  <div class="gallery">
-    <img src="https://i.imgur.com/1XbZ6GZ.jpeg" alt="Memories 1" />
-    <img src="https://i.imgur.com/gw4kdyz.jpeg" alt="Memories 2" />
-    <img src="https://i.imgur.com/Xj4GVFK.jpeg" alt="Memories 3" />
-    <!-- Add more photos by duplicating this <img> line and replacing the link -->
+      <div class="photo-frame">
+        <img src="https://your-image-link.jpg" alt="Our special memory">
+        <div class="photo-caption">Our favorite moment together</div>
+      </div>
+
+      <div class="memories">
+        <div class="memory-card"><img src="https://memory1.jpg" alt="Memory 1"></div>
+        <div class="memory-card"><img src="https://memory2.jpg" alt="Memory 2"></div>
+        <div class="memory-card"><img src="https://memory3.jpg" alt="Memory 3"></div>
+        <div class="memory-card"><img src="https://memory4.jpg" alt="Memory 4"></div>
+      </div>
+
+      <div class="roses" id="roses">
+        <img src="https://pngimg.com/uploads/rose/rose_PNG66737.png" alt="rose">
+        <img src="https://pngimg.com/uploads/rose/rose_PNG66737.png" alt="rose">
+        <img src="https://pngimg.com/uploads/rose/rose_PNG66737.png" alt="rose">
+      </div>
+    </div>
   </div>
 
-  <audio autoplay loop>
-    <source src="https://raw.githubusercontent.com/Queue40/anniversary-gift/main/Mifhululu%20(Live%202006).mp3" type="audio/mpeg">
+  <audio id="anniversary-song" autoplay loop hidden>
+    <source src="Mifhululu (Live 2006).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Falling flowers animation -->
+  <footer>
+    I love Khuluka — Happy 2-Year Anniversary
+  </footer>
+
   <script>
-    const flowerCount = 20;
-    for (let i = 0; i < flowerCount; i++) {
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.animationDelay = Math.random() * 10 + 's';
-      document.body.appendChild(flower);
+    const present = document.getElementById('present-box');
+    const content = document.getElementById('gift-content');
+    const title = document.getElementById('intro-title');
+    const song = document.getElementById('anniversary-song');
+    const roses = document.getElementById('roses');
+
+    present.addEventListener('click', () => {
+      present.style.display = 'none';
+      title.classList.add('hidden');
+      content.classList.remove('hidden');
+      roses.style.display = 'flex';
+      song.play();
+      setInterval(() => addRose(), 2000);
+    });
+
+    function addRose() {
+      const rose = document.createElement('img');
+      rose.src = 'https://pngimg.com/uploads/rose/rose_PNG66737.png';
+      rose.className = 'rose';
+      rose.style.left = Math.random() * window.innerWidth + 'px';
+      rose.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(rose);
+      setTimeout(() => document.body.removeChild(rose), 10000);
     }
   </script>
-
 </body>
 </html>
