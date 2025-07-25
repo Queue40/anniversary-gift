@@ -12,55 +12,59 @@
       --text-color: #333;
       --shadow: 0 4px 8px rgba(233, 30, 99, 0.2);
     }
-    
+
     body {
       background: var(--bg-color);
       font-family: 'Segoe UI', 'Arial', sans-serif;
       color: var(--text-color);
       text-align: center;
       padding: 20px;
-      line-height: 1.6;
       margin: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
     }
-    
+
+    #present-box {
+      width: 200px;
+      height: 200px;
+      background: url('https://cdn-icons-png.flaticon.com/512/4146/4146813.png') no-repeat center/contain;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
     .container {
       max-width: 800px;
       width: 90%;
       margin: 0 auto;
       padding: 20px;
+      animation: fadeIn 2s ease-in-out;
     }
-    
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
     h1 {
       font-size: 2.5em;
       margin: 20px 0;
       color: var(--primary-color);
       text-shadow: var(--shadow);
-      animation: pulse 2s infinite;
     }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .heart {
-      color: var(--primary-color);
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      25% { transform: scale(1.1); }
-      50% { transform: scale(1); }
-      75% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    
+
     .message {
       font-size: 1.2em;
       margin: 30px 0;
@@ -69,7 +73,7 @@
       border-radius: 15px;
       box-shadow: var(--shadow);
     }
-    
+
     .photo-frame {
       width: 100%;
       max-width: 600px;
@@ -79,17 +83,12 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       position: relative;
     }
-    
+
     .photo-frame img {
       width: 100%;
       display: block;
-      transition: transform 0.5s ease;
     }
-    
-    .photo-frame:hover img {
-      transform: scale(1.03);
-    }
-    
+
     .photo-caption {
       position: absolute;
       bottom: 0;
@@ -100,13 +99,7 @@
       padding: 10px;
       font-weight: bold;
     }
-    
-    audio {
-      margin: 30px 0;
-      width: 100%;
-      max-width: 400px;
-    }
-    
+
     .memories {
       display: flex;
       flex-wrap: wrap;
@@ -114,7 +107,7 @@
       gap: 15px;
       margin: 30px 0;
     }
-    
+
     .memory-card {
       width: 120px;
       height: 120px;
@@ -124,82 +117,94 @@
       overflow: hidden;
       transition: transform 0.3s ease;
     }
-    
+
     .memory-card:hover {
       transform: translateY(-5px);
     }
-    
+
     .memory-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     footer {
       margin-top: 40px;
       padding: 20px;
       font-size: 0.9em;
       color: var(--primary-color);
     }
-    
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-      
-      .message {
-        font-size: 1em;
-      }
-      
-      .memory-card {
-        width: 80px;
-        height: 80px;
-      }
+
+    .rose {
+      position: absolute;
+      top: -50px;
+      width: 40px;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>
-      <span class="heart">💖</span> Happy 2-Year Anniversary <span class="heart">💖</span>
-    </h1>
-    
-    <div class="message">
-      <p>My dearest love,</p>
-      <p>These past two years with you have been the most magical journey of my life. Every moment, every laugh, and even every challenge has only brought us closer together.</p>
-      <p>You are my sunshine, my rock, and my greatest adventure. Here's to many more years of love and happiness together!</p>
-      <p>Forever yours,</p>
-      <p><strong>[Your Name]</strong></p>
+  <h1 id="intro-title">💖 Happy 2-Year Anniversary 💖</h1>
+  <div id="present-box"></div>
+
+  <div id="gift-content" class="hidden">
+    <div class="container">
+      <div class="message">
+        <p>Khuluka my heart, my love,</p>
+        <p>These past two years with you have been the best journey of my life. Every moment, every laugh, and even every challenge we had has only brought us closer together.</p>
+        <p>Khuluka ene u tovha Ṋaledzi yanga ye nda to tupula ene a eṰhe kha dzanda la minwe.</p>
+        <p>You are my sunshine, my rock, and my greatest adventure. Here's to many more years of love and happiness together!</p>
+      </div>
+
+      <div class="photo-frame">
+        <img src="https://your-image-link.jpg" alt="Our special memory">
+        <div class="photo-caption">Our favorite moment together</div>
+      </div>
+
+      <div class="memories">
+        <div class="memory-card"><img src="https://memory1.jpg" alt="Memory 1"></div>
+        <div class="memory-card"><img src="https://memory2.jpg" alt="Memory 2"></div>
+        <div class="memory-card"><img src="https://memory3.jpg" alt="Memory 3"></div>
+        <div class="memory-card"><img src="https://memory4.jpg" alt="Memory 4"></div>
+      </div>
+
+      <audio id="anniversary-song" autoplay loop hidden>
+        <source src="https://cors-proxy.elfsight.com/https://www.youtube.com/watch?v=I2k3r5_ux7o" type="audio/mpeg">
+      </audio>
+
+      <footer>
+        i love khukuka — Happy 2-Year Anniversary
+      </footer>
     </div>
-    
-    <div class="photo-frame">
-      <img src="https://your-image-link.jpg" alt="Our special memory">
-      <div class="photo-caption">Our favorite moment together</div>
-    </div>
-    
-    <div class="memories">
-      <div class="memory-card">
-        <img src="https://memory1.jpg" alt="Memory 1">
-      </div>
-      <div class="memory-card">
-        <img src="https://memory2.jpg" alt="Memory 2">
-      </div>
-      <div class="memory-card">
-        <img src="https://memory3.jpg" alt="Memory 3">
-      </div>
-      <div class="memory-card">
-        <img src="https://memory4.jpg" alt="Memory 4">
-      </div>
-    </div>
-    
-    <audio controls autoplay loop>
-      <source src="https://your-mp3-link.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    
-    <footer>
-      Made with <span class="heart">❤️</span> for the love of my life
-    </footer>
   </div>
+
+  <script>
+    const present = document.getElementById('present-box');
+    const content = document.getElementById('gift-content');
+    const title = document.getElementById('intro-title');
+    const song = document.getElementById('anniversary-song');
+
+    present.addEventListener('click', () => {
+      present.classList.add('hidden');
+      title.classList.add('hidden');
+      content.classList.remove('hidden');
+      song.play();
+      setInterval(() => addRose(), 20000);
+    });
+
+    function addRose() {
+      const rose = document.createElement('img');
+      rose.src = 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+      rose.className = 'rose';
+      rose.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(rose);
+      setTimeout(() => document.body.removeChild(rose), 10000);
+    }
+  </script>
 </body>
 </html>
